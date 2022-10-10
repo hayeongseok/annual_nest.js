@@ -8,6 +8,9 @@ import { MySqlConfigModule } from './database/config.module';
 import { MySqlConfigService } from './database/config.service';
 import { AnnualInformationModule } from './annual-information/annual-information.module';
 import { AnnualApplicationModule } from './annual-application/annual-application.module';
+import { QnaController } from './qna/qna.controller';
+import { QnaService } from './qna/qna.service';
+import { QnaModule } from './qna/qna.module';
 
 /*
   - npm install 진행
@@ -49,7 +52,8 @@ import { AnnualApplicationModule } from './annual-application/annual-application
     }),
     MemberModule,
     AnnualInformationModule,
-    AnnualApplicationModule
+    AnnualApplicationModule,
+    QnaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -4,6 +4,7 @@ import { AnnualInformationService } from 'src/annual-information/annual-informat
 import { MemberDto } from './dto/member.dto';
 import { Member } from './entity/member.entity';
 import { MemberRopository } from './repository/member.repository';
+import { LoginDto } from './dto/login.dto';
 
 @Injectable()
 export class MemberService {
@@ -14,12 +15,18 @@ export class MemberService {
         private annualInformationService: AnnualInformationService
     ){}
 
+
+
     async getAll():Promise<Member[]> {
         return await this.memberRepository.find({relations: ["annualInfo"]});
     }
 
     async getOne(id: number):Promise<Member> {
         return await this.memberRepository.findOne(id, {relations: ["annualInfo"]});
+    }
+
+    async login(loginDto: LoginDto):Promise<LoginDto> {
+        return await this.memberRepository.findOne(loginDto);
     }
  
     async create(member: MemberDto):Promise<Member> {

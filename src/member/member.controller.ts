@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { LoginDto } from './dto/login.dto';
 import { MemberDto } from './dto/member.dto';
 import { Member } from './entity/member.entity';
 import { MemberService } from './member.service';
@@ -17,6 +18,11 @@ export class MemberController {
     @Get('/:id')
     async getOne(@Param('id') id: number): Promise<Member> {
         return await this.memberService.getOne(id);
+    }
+
+    @Post('/login')
+    async login(@Body() loginDto:LoginDto):Promise<LoginDto> {
+        return await this.memberService.login(loginDto);
     }
 
     @Post()

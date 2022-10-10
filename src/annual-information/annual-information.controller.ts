@@ -13,7 +13,7 @@ export class AnnualInformationController {
         return await this.annualInformationService.getAll();
     }
 
-    @Get('/:id')
+    @Get(':id')
     async getOne(@Param('id') id: number): Promise<AnnualInformation> {
         return await this.annualInformationService.getOne(id);
     }
