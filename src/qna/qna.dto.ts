@@ -1,6 +1,8 @@
+import { Member } from "src/member/entity/member.entity";
+
 export class QnaDto {
+    member: Member;    
     title: string;
     body: string;
-    member_id: number;
     update_ed_at?: Date;
 }

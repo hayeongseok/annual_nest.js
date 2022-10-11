@@ -1,5 +1,6 @@
 import { AnnualApplication } from "src/annual-application/entity/annualApplication.entity";
 import { AnnualInformation } from "src/annual-information/entity/annualInformation.entity";
+import { Qna } from "src/qna/entity/qna.entity";
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -20,6 +21,9 @@ export class Member {
     @OneToOne(type => AnnualInformation, (annualInfo) => annualInfo.member)
     @JoinColumn()
     annualInfo: AnnualInformation;
+
+    @OneToMany(type => Qna, qna => qna.member)
+    qnas: Qna[] 
 
     // @OneToMany(type => AnnualApplication, annualApplication => annualApplication.member_id)
     // annualApplication: AnnualApplication[];

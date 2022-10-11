@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Member } from "src/member/entity/member.entity";
+import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
 import { qnaStatus } from "../enum/qna.enum";
 
 @Entity()
@@ -7,7 +8,13 @@ export class Qna {
     id: number;
 
     @Column()
-    member_id: number;
+    memberId: number;
+
+    // @Column()
+    // memberId: string;
+
+    @ManyToOne(type => Member, member => member.qnas)
+    member: Member;
 
     @Column()
     title: string;

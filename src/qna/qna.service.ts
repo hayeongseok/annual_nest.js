@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MemberService } from 'src/member/member.service';
 import { Qna } from './entity/qna.entity';
 import { QnaDto } from './qna.dto';
 import { QnaRepository } from './repository/qna.repository';
@@ -8,11 +9,12 @@ import { QnaRepository } from './repository/qna.repository';
 export class QnaService {
     constructor(
         @InjectRepository(Qna)    
-        private qnaRepository: QnaRepository
+        private qnaRepository: QnaRepository,
+        // private memberService: MemberService
     ){}
 
     async getOneQnA(qnaId: number): Promise<Qna> {
-        return await this.qnaRepository.findOne(qnaId);
+        return await this.qnaRepository.findOne(qnaId, {relations: ['member']});
     }
 
     async getAllQnA(id: number) {
